@@ -96,7 +96,9 @@ function App() {
   const [query, setQuery] = useState("");
   const [selected, setSelected] = useState<number | null>(null);
   const [saved, setSaved] = useState<Set<string>>(new Set());
-  const [heroPhotoIndex, setHeroPhotoIndex] = useState(0);
+  const [heroPhotoIndex, setHeroPhotoIndex] = useState(
+    () => Math.floor(Math.random() * photos.length),
+  );
 
   const heroPhoto = photos[heroPhotoIndex % photos.length];
 
