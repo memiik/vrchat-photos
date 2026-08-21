@@ -96,6 +96,17 @@ function App() {
   const [query, setQuery] = useState("");
   const [selected, setSelected] = useState<number | null>(null);
   const [saved, setSaved] = useState<Set<string>>(new Set());
+  const [heroPhotoIndex, setHeroPhotoIndex] = useState(0);
+
+  const heroPhoto = photos[heroPhotoIndex % photos.length];
+
+  useEffect(() => {
+    const rotation = window.setInterval(() => {
+      setHeroPhotoIndex((current) => (current + 1) % photos.length);
+    }, 6500);
+
+    return () => window.clearInterval(rotation);
+  }, []);
 
   const visiblePhotos = useMemo(() => {
     const normalized = query.trim().toLowerCase();
@@ -153,10 +164,15 @@ function App() {
       <main id="top">
         <section className="hero" aria-labelledby="hero-title">
           <div className="hero-image-wrap">
-            <img src={photos[0].src} alt="VRChat avatar surrounded by golden light" />
+            <img
+              key={heroPhoto.src}
+              className="hero-image"
+              src={heroPhoto.src}
+              alt={`VRChat ${heroPhoto.tag.toLowerCase()} captured on ${heroPhoto.date}`}
+            />
             <div className="hero-scanline" />
-            <div className="hero-code">WORLD_081 // ONLINE</div>
-            <div className="hero-caption">Captured in VRChat<br />06.08.26 — 17:09</div>
+            <div className="hero-code">SIGNAL_{String(heroPhotoIndex + 1).padStart(3, "0")} // ONLINE</div>
+            <div className="hero-caption">Captured in VRChat<br />{heroPhoto.date}</div>
           </div>
 
           <div className="hero-copy">

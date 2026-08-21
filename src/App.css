@@ -27,6 +27,8 @@ nav a.active { color: white; }
 .hero-image-wrap { position: relative; height: 650px; overflow: hidden; clip-path: polygon(0 5%, 94% 0, 100% 89%, 7% 100%); background: #18141e; }
 .hero-image-wrap::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, transparent 55%, #0a0b0fd9 100%), linear-gradient(0deg, #07080dd1, transparent 40%); }
 .hero-image-wrap img { width: 100%; height: 100%; object-fit: cover; filter: saturate(.9) contrast(1.05); }
+.hero-image { animation: hero-image-in 1.15s ease both; }
+@keyframes hero-image-in { from { opacity: 0; transform: scale(1.045); } to { opacity: 1; transform: scale(1); } }
 .hero-scanline { position: absolute; inset: 0; z-index: 2; opacity: .15; background: repeating-linear-gradient(0deg, transparent 0 3px, #fff 4px); }
 .hero-code, .hero-caption { position: absolute; z-index: 3; font: 400 9px/1.6 "DM Mono"; letter-spacing: .13em; }
 .hero-code { top: 48px; left: 35px; color: var(--cyan); }
