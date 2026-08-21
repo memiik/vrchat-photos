@@ -16,6 +16,7 @@ const featuredPhotos: Photo[] = [
   { src: "/photos/vrchat-2026-08-06-17-02-19.webp", title: "After the Rain", world: "The Midnight Garden", date: "AUG 06, 2026", tag: "Worlds" },
   { src: "/photos/vrchat-2026-08-06-16-22-08.webp", title: "Soft Signal", world: "Aetheria", date: "AUG 06, 2026", tag: "Portraits" },
   { src: "/photos/vrchat-2026-08-06-16-18-44.webp", title: "Between Worlds", world: "Aetheria", date: "AUG 06, 2026", tag: "Worlds" },
+  { src: "/photos/vrchat-2026-08-03-22-44-17.webp", title: "Golden Hour", world: "VRChat", date: "AUG 03, 2026", tag: "Portraits" },
   { src: "/photos/vrchat-2026-08-02-00-45-06.webp", title: "Dream State", world: "Luminous Hotel", date: "AUG 02, 2026", tag: "Portraits" },
   { src: "/photos/vrchat-2026-07-31-21-17-57.webp", title: "Warm Company", world: "Cozy Cabin", date: "JUL 31, 2026", tag: "Friends" },
   { src: "/photos/vrchat-2026-07-26-22-39-50.webp", title: "Last Light", world: "Organism", date: "JUL 26, 2026", tag: "Worlds" },
