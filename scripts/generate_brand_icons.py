@@ -15,12 +15,18 @@ draw.rounded_rectangle(
     fill=(8, 10, 13, 255),
 )
 
-draw = ImageDraw.Draw(canvas)
-draw.ellipse((250, 330, 630, 710), outline=(91, 242, 223, 255), width=24)
-draw.ellipse((394, 330, 774, 710), outline=(255, 93, 162, 255), width=24)
+cyan = (91, 242, 223, 255)
+white = (255, 255, 255, 170)
+pink = (255, 93, 162, 255)
+
+draw.line(((430, 270), (270, 270), (270, 430)), fill=cyan, width=26, joint="curve")
+draw.line(((594, 270), (754, 270), (754, 430)), fill=cyan, width=26, joint="curve")
+draw.line(((270, 594), (270, 754), (430, 754)), fill=cyan, width=26, joint="curve")
+draw.line(((594, 754), (754, 754), (754, 594)), fill=cyan, width=26, joint="curve")
+draw.line(((380, 512), (644, 512)), fill=white, width=10)
 draw.polygon(
-    ((512, 472), (560, 520), (512, 568), (464, 520)),
-    fill=(255, 255, 255, 255),
+    ((512, 466), (558, 512), (512, 558), (466, 512)),
+    fill=pink,
 )
 
 for filename, size in (("favicon.png", 64), ("apple-touch-icon.png", 180)):

@@ -87,7 +87,22 @@ const photos: Photo[] = archivePhotos
     title: "VRChat capture",
   }));
 
-const filters = ["All memories", "Portraits", "Friends", "Worlds", "Nightlife", "Archive"] as const;
+const filters = ["All memories", "Worlds", "Archive"] as const;
+
+const getPhotoYear = (date: string) => Number(date.match(/\b\d{4}\b/)?.[0] ?? 0);
+
+const formatReelDateRange = (firstDate: string, lastDate: string) => {
+  if (firstDate === lastDate) return firstDate;
+
+  const first = firstDate.match(/^([A-Z]{3}) (\d{2}), (\d{4})$/);
+  const last = lastDate.match(/^([A-Z]{3}) (\d{2}), (\d{4})$/);
+
+  if (first && last && first[3] === last[3]) {
+    return `${first[1]} ${first[2]} — ${last[1]} ${last[2]}, ${first[3]}`;
+  }
+
+  return `${firstDate} — ${lastDate}`;
+};
 
 function App() {
   const [activeFilter, setActiveFilter] = useState<(typeof filters)[number]>("All memories");
@@ -111,11 +126,26 @@ function App() {
   const visiblePhotos = useMemo(() => {
     const normalized = query.trim().toLowerCase();
     return photos.filter((photo) => {
-      const inFilter = activeFilter === "All memories" || photo.tag === activeFilter;
-      const matchesSearch = !normalized || `${photo.title} ${photo.tag} ${photo.date}`.toLowerCase().includes(normalized);
+      const inFilter = activeFilter === "All memories"
+        || (activeFilter === "Worlds" && photo.tag === "Worlds")
+        || (activeFilter === "Archive" && getPhotoYear(photo.date) < 2026);
+      const matchesSearch = !normalized || `${photo.title} ${photo.date}`.toLowerCase().includes(normalized);
       return inFilter && matchesSearch;
     });
   }, [activeFilter, query]);
+
+  const photoReels = useMemo(
+    () => Array.from(
+      { length: Math.ceil(visiblePhotos.length / 5) },
+      (_, reelIndex) => visiblePhotos
+        .slice(reelIndex * 5, reelIndex * 5 + 5)
+        .map((photo, frameIndex) => ({
+          photo,
+          index: reelIndex * 5 + frameIndex,
+        })),
+    ),
+    [visiblePhotos],
+  );
 
   useEffect(() => {
     if (selected === null) return;
@@ -149,8 +179,7 @@ function App() {
 
       <header className="topbar">
         <a className="brand" href="#top" aria-label="VR Archive home">
-          <span className="brand-mark" aria-hidden="true"><i /><i /><b /></span>
-          <span>VR<span>//</span>ARCHIVE</span>
+          <span className="brand-lockup"><strong><span>VR</span><i aria-hidden="true" />ARCHIVE</strong></span>
         </a>
         <nav aria-label="Main navigation">
           <a className="active" href="#gallery">Archive</a>
@@ -168,11 +197,11 @@ function App() {
               key={heroPhoto.src}
               className="hero-image"
               src={heroPhoto.src}
-              alt={`VRChat ${heroPhoto.tag.toLowerCase()} captured on ${heroPhoto.date}`}
+              alt={`VRChat photo captured on ${heroPhoto.date}`}
             />
             <div className="hero-scanline" />
-            <div className="hero-code">SIGNAL_{String(heroPhotoIndex + 1).padStart(3, "0")} // ONLINE</div>
-            <div className="hero-caption">Captured in VRChat<br />{heroPhoto.date}</div>
+            <div className="hero-code"><small>Archive // Online</small><span>FRAME_{String(heroPhotoIndex + 1).padStart(3, "0")}</span></div>
+            <div className="hero-caption"><small>Captured in VRChat</small><time>{heroPhoto.date}</time></div>
           </div>
 
           <div className="hero-copy">
@@ -192,8 +221,8 @@ function App() {
         <section className="archive" id="gallery" aria-labelledby="archive-title">
           <div className="section-heading">
             <div>
-              <p className="eyebrow"><span /> THE LATEST CAPTURES</p>
-              <h2 id="archive-title">RECENT <em>TRANSMISSIONS</em></h2>
+              <p className="eyebrow"><span /> CURATED IN SEQUENCE</p>
+              <h2 id="archive-title">MEMORY <em>REELS</em></h2>
             </div>
             <p className="archive-count"><b>{String(visiblePhotos.length).padStart(2, "0")}</b> / {photos.length} loaded</p>
           </div>
@@ -213,24 +242,35 @@ function App() {
           </div>
 
           {visiblePhotos.length ? (
-            <div className="photo-grid">
-              {visiblePhotos.map((photo, index) => (
-                <article className="photo-card" key={photo.src} style={{ "--delay": `${Math.min(index * 45, 360)}ms` } as React.CSSProperties}>
-                  <button className="photo-open" onClick={() => setSelected(index)} aria-label={`Open photo from ${photo.date}`}>
-                    <img src={photo.src} alt={`VRChat photo from ${photo.date}`} loading={index > 5 ? "lazy" : "eager"} />
-                    <span className="photo-index">{String(index + 1).padStart(2, "0")}</span>
-                    <span className="view-hint">VIEW <b>↗</b></span>
-                  </button>
-                  <div className="photo-meta">
-                    <div className="capture-date"><span>Captured</span><time>{photo.date}</time></div>
-                    <button className={saved.has(photo.src) ? "heart saved" : "heart"} onClick={() => toggleSaved(photo.src)} aria-label={saved.has(photo.src) ? `Unsave photo from ${photo.date}` : `Save photo from ${photo.date}`}>{saved.has(photo.src) ? "♥" : "♡"}</button>
+            <div className="memory-reels">
+              {photoReels.map((reel, reelIndex) => (
+                <section className="memory-reel" key={`${activeFilter}-${reelIndex}`} aria-label={`Memory reel ${reelIndex + 1}`}>
+                  <header className="reel-header">
+                    <div><span>REEL_{String(reelIndex + 1).padStart(2, "0")}</span><b>{reel.length} preserved frames</b></div>
+                    <time>{formatReelDateRange(reel[reel.length - 1].photo.date, reel[0].photo.date)}</time>
+                  </header>
+                  <div className="reel-grid">
+                    {reel.map(({ photo, index }, frameIndex) => (
+                      <article
+                        className={frameIndex === 0 ? "reel-frame lead" : "reel-frame support"}
+                        key={photo.src}
+                        style={{ "--delay": `${Math.min(frameIndex * 70, 280)}ms` } as React.CSSProperties}
+                      >
+                        <button className="photo-open" onClick={() => setSelected(index)} aria-label={`Open photo from ${photo.date}`}>
+                          <img src={photo.src} alt={`VRChat photo from ${photo.date}`} loading={index > 5 ? "lazy" : "eager"} />
+                          <span className="frame-number">FRAME_{String(index + 1).padStart(3, "0")}</span>
+                          <span className="frame-date"><small>Captured</small>{photo.date}</span>
+                          <span className="view-hint">OPEN <b>↗</b></span>
+                        </button>
+                        <button className={saved.has(photo.src) ? "heart reel-heart saved" : "heart reel-heart"} onClick={() => toggleSaved(photo.src)} aria-label={saved.has(photo.src) ? `Unsave photo from ${photo.date}` : `Save photo from ${photo.date}`} aria-pressed={saved.has(photo.src)}>♡</button>
+                      </article>
+                    ))}
                   </div>
-                  <div className="photo-footer"><span>FRAME_{String(index + 1).padStart(3, "0")}</span><span>{photo.tag}</span></div>
-                </article>
+                </section>
               ))}
             </div>
           ) : (
-            <div className="empty-state"><span>NO SIGNAL</span><h3>No memories found</h3><p>Try another search or transmission type.</p></div>
+            <div className="empty-state"><span>NO FRAMES</span><h3>No memories found</h3><p>Try another search or archive filter.</p></div>
           )}
         </section>
 
@@ -245,7 +285,7 @@ function App() {
       </main>
 
       <footer>
-        <a className="brand" href="#top"><span className="brand-mark" aria-hidden="true"><i /><i /><b /></span><span>VR<span>//</span>ARCHIVE</span></a>
+        <a className="brand" href="#top" aria-label="VR Archive home"><span className="brand-lockup"><strong><span>VR</span><i aria-hidden="true" />ARCHIVE</strong></span></a>
         <p>Made between worlds · 2026</p>
         <p className="status"><i /> ARCHIVE ONLINE</p>
       </footer>
@@ -257,7 +297,7 @@ function App() {
           <figure>
             <img src={visiblePhotos[selected].src} alt={`VRChat photo from ${visiblePhotos[selected].date}`} />
             <figcaption>
-              <div><span>{visiblePhotos[selected].tag} · CAPTURED</span><h2>{visiblePhotos[selected].date}</h2></div>
+              <div><span>CAPTURED</span><h2>{visiblePhotos[selected].date}</h2></div>
               <p>FRAME_{String(selected + 1).padStart(3, "0")}<br />VRCHAT ARCHIVE</p>
             </figcaption>
           </figure>
