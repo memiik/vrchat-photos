@@ -181,7 +181,7 @@ function App() {
 
           <div className="hero-copy">
             <p className="eyebrow"><span /> AN UNOFFICIAL VRCHAT PHOTO JOURNAL</p>
-            <h1 id="hero-title">VIRTUAL<br /><em>MEMMORIES</em></h1>
+            <h1 id="hero-title">VIRTUAL<br /><em><span className="hero-name">MEMM</span>ORIES</em></h1>
             <p className="intro">A personal archive of the people, places, and beautifully strange moments that felt real enough to keep.</p>
             <button className="primary-cta" onClick={scrollToGallery}>Explore the archive <span>↓</span></button>
           </div>

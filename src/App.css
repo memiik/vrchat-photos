@@ -39,6 +39,7 @@ nav a.active { color: white; }
 .hero h1, .archive h2 { margin: 24px 0 0; font-family: "Space Grotesk"; font-weight: 600; letter-spacing: -.065em; line-height: .82; }
 .hero h1 { font-size: clamp(62px, 7.8vw, 126px); }
 .hero h1 em, .archive h2 em { font-style: normal; color: transparent; -webkit-text-stroke: 1px rgba(255,255,255,.55); }
+.hero h1 .hero-name { color: var(--cyan); -webkit-text-stroke: 0; text-shadow: 0 0 34px rgba(91,242,223,.24); }
 .intro { max-width: 460px; margin: 38px 0 0 auto; color: #a9acb4; font-size: 14px; line-height: 1.8; }
 .primary-cta { display: flex; align-items: center; justify-content: space-between; min-width: 250px; margin: 34px 0 0 auto; padding: 17px 18px; background: var(--cyan); color: #08110f; font: 600 11px "DM Mono"; text-transform: uppercase; letter-spacing: .09em; box-shadow: 0 0 38px rgba(91,242,223,.16); transition: transform .25s, box-shadow .25s; }
 .primary-cta:hover { transform: translateY(-3px); box-shadow: 0 8px 44px rgba(91,242,223,.28); }
