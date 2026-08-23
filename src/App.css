@@ -9,11 +9,11 @@
 .topbar { position: absolute; z-index: 10; top: 0; left: 0; right: 0; height: 88px; padding: 0 clamp(24px, 5vw, 78px); display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,.12); background: linear-gradient(#090b10bd, transparent); }
 .brand { display: inline-flex; align-items: center; gap: 12px; font: 600 16px/1 "Space Grotesk"; letter-spacing: .08em; }
 .brand > span:last-child > span { color: var(--cyan); }
-.brand-mark { position: relative; width: 29px; height: 23px; display: inline-flex; align-items: center; justify-content: center; }
-.brand-mark::before { content: ""; position: absolute; width: 12px; height: 12px; border: 2px solid var(--cyan); transform: rotate(45deg); }
-.brand-mark i { position: absolute; width: 13px; height: 2px; background: var(--cyan); }
-.brand-mark i:first-child { left: 0; transform: rotate(45deg); }
-.brand-mark i:last-child { right: 0; transform: rotate(-45deg); }
+.brand-mark { position: relative; width: 31px; height: 31px; display: inline-grid; flex: 0 0 auto; place-items: center; isolation: isolate; }
+.brand-mark i { position: absolute; top: 6px; width: 18px; height: 18px; border: 1.5px solid; border-radius: 50%; }
+.brand-mark i:first-child { left: 1px; border-color: var(--cyan); box-shadow: 0 0 10px rgba(91,242,223,.28); }
+.brand-mark i:nth-child(2) { right: 1px; border-color: var(--pink); box-shadow: 0 0 10px rgba(255,93,162,.22); }
+.brand-mark b { position: relative; z-index: 1; width: 5px; height: 5px; border: 1px solid #080a0d; background: #fff; transform: rotate(45deg); box-shadow: 0 0 8px rgba(255,255,255,.75); }
 nav { display: flex; gap: 44px; font: 400 11px/1 "DM Mono"; letter-spacing: .14em; text-transform: uppercase; color: #a1a6af; }
 nav a { position: relative; padding: 8px 0; }
 nav a::after { content: ""; position: absolute; left: 0; right: 100%; bottom: 0; height: 1px; background: var(--cyan); transition: right .25s; }

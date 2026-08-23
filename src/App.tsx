@@ -149,7 +149,7 @@ function App() {
 
       <header className="topbar">
         <a className="brand" href="#top" aria-label="VR Archive home">
-          <span className="brand-mark"><i /><i /></span>
+          <span className="brand-mark" aria-hidden="true"><i /><i /><b /></span>
           <span>VR<span>//</span>ARCHIVE</span>
         </a>
         <nav aria-label="Main navigation">
@@ -176,7 +176,7 @@ function App() {
           </div>
 
           <div className="hero-copy">
-            <p className="eyebrow"><span /> AN UNOFFICIAL VRCHAT PHOTO JOURNAL</p>
+            <p className="eyebrow"><span /> VRCHAT PHOTO JOURNAL</p>
             <h1 id="hero-title">VIRTUAL<br /><em><span className="hero-name">MEMM</span>ORIES</em></h1>
             <p className="intro">A personal archive of the people, places, and beautifully strange moments that felt real enough to keep.</p>
             <button className="primary-cta" onClick={scrollToGallery}>Explore the archive <span>↓</span></button>
@@ -245,7 +245,7 @@ function App() {
       </main>
 
       <footer>
-        <a className="brand" href="#top"><span className="brand-mark"><i /><i /></span><span>VR<span>//</span>ARCHIVE</span></a>
+        <a className="brand" href="#top"><span className="brand-mark" aria-hidden="true"><i /><i /><b /></span><span>VR<span>//</span>ARCHIVE</span></a>
         <p>Made between worlds · 2026</p>
         <p className="status"><i /> ARCHIVE ONLINE</p>
       </footer>
