@@ -7,11 +7,13 @@ type Photo = {
   world: string;
   date: string;
   tag: "Portraits" | "Friends" | "Worlds" | "Nightlife" | "Archive";
+  local?: boolean;
 };
 
 const PHOTO_BASE_URL = (import.meta.env.VITE_PHOTO_BASE_URL ?? "https://vrc-photography.s3.amazonaws.com/images").replace(/\/$/, "");
 
 const featuredPhotos: Photo[] = [
+  { src: "/photos/vrchat-2026-08-23-19-13-38.webp", title: "Side by Side", world: "VRChat", date: "AUG 23, 2026", tag: "Friends", local: true },
   { src: "/photos/vrchat-2026-08-06-17-09-48.webp", title: "Honey Glow", world: "The Midnight Garden", date: "AUG 06, 2026", tag: "Portraits" },
   { src: "/photos/vrchat-2026-08-06-17-02-19.webp", title: "After the Rain", world: "The Midnight Garden", date: "AUG 06, 2026", tag: "Worlds" },
   { src: "/photos/vrchat-2026-08-06-16-22-08.webp", title: "Soft Signal", world: "Aetheria", date: "AUG 06, 2026", tag: "Portraits" },
@@ -85,7 +87,7 @@ const photos: Photo[] = archivePhotos
   .filter((photo) => photo.title !== "Parallel Skies" && !photo.src.endsWith("vrchat-2026-07-25-03-19-25.webp"))
   .map((photo) => ({
     ...photo,
-    src: `${PHOTO_BASE_URL}/${photo.src.split("/").pop()}`,
+    src: photo.local ? photo.src : `${PHOTO_BASE_URL}/${photo.src.split("/").pop()}`,
     title: "VRChat capture",
   }));
 
