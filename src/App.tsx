@@ -13,10 +13,8 @@ const PHOTO_BASE_URL = (import.meta.env.VITE_PHOTO_BASE_URL ?? "https://vrc-phot
 
 const featuredPhotos: Photo[] = [
   { src: "/photos/vrchat-2026-08-23-19-13-38.webp", title: "Side by Side", world: "VRChat", date: "AUG 23, 2026", tag: "Friends" },
-  { src: "/photos/vrchat-2026-08-06-17-09-48.webp", title: "Honey Glow", world: "The Midnight Garden", date: "AUG 06, 2026", tag: "Portraits" },
   { src: "/photos/vrchat-2026-08-06-17-02-19.webp", title: "After the Rain", world: "The Midnight Garden", date: "AUG 06, 2026", tag: "Worlds" },
   { src: "/photos/vrchat-2026-08-06-16-22-08.webp", title: "Soft Signal", world: "Aetheria", date: "AUG 06, 2026", tag: "Portraits" },
-  { src: "/photos/vrchat-2026-08-06-16-18-44.webp", title: "Between Worlds", world: "Aetheria", date: "AUG 06, 2026", tag: "Worlds" },
   { src: "/photos/vrchat-2026-08-03-22-44-17.webp", title: "Golden Hour", world: "VRChat", date: "AUG 03, 2026", tag: "Portraits" },
   { src: "/photos/vrchat-2026-08-02-00-45-06.webp", title: "Dream State", world: "Luminous Hotel", date: "AUG 02, 2026", tag: "Portraits" },
   { src: "/photos/vrchat-2026-07-31-21-17-57.webp", title: "Warm Company", world: "Cozy Cabin", date: "JUL 31, 2026", tag: "Friends" },
@@ -52,7 +50,6 @@ const olderPhotoFiles = [
   "vrchat-2026-01-10-01-14-59.webp",
   "vrchat-2025-12-25-03-21-52.webp",
   "vrchat-2025-12-20-01-50-10.webp",
-  "vrchat-2025-12-19-21-02-32.webp",
   "vrchat-2025-12-17-23-20-55.webp",
   "vrchat-2025-11-17-01-07-32.webp",
   "vrchat-2025-09-06-01-41-40.webp",
