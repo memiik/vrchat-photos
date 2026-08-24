@@ -108,7 +108,6 @@ function App() {
   const [activeFilter, setActiveFilter] = useState<(typeof filters)[number]>("All memories");
   const [query, setQuery] = useState("");
   const [selected, setSelected] = useState<number | null>(null);
-  const [saved, setSaved] = useState<Set<string>>(new Set());
   const [heroPhotoIndex, setHeroPhotoIndex] = useState(
     () => Math.floor(Math.random() * photos.length),
   );
@@ -161,14 +160,6 @@ function App() {
       window.removeEventListener("keydown", onKeyDown);
     };
   }, [selected, visiblePhotos.length]);
-
-  const toggleSaved = (src: string) => {
-    setSaved((current) => {
-      const next = new Set(current);
-      next.has(src) ? next.delete(src) : next.add(src);
-      return next;
-    });
-  };
 
   const scrollToGallery = () => document.querySelector("#gallery")?.scrollIntoView({ behavior: "smooth" });
 
@@ -262,7 +253,6 @@ function App() {
                           <span className="frame-date"><small>Captured</small>{photo.date}</span>
                           <span className="view-hint">OPEN <b>↗</b></span>
                         </button>
-                        <button className={saved.has(photo.src) ? "heart reel-heart saved" : "heart reel-heart"} onClick={() => toggleSaved(photo.src)} aria-label={saved.has(photo.src) ? `Unsave photo from ${photo.date}` : `Save photo from ${photo.date}`} aria-pressed={saved.has(photo.src)}>♡</button>
                       </article>
                     ))}
                   </div>
@@ -286,7 +276,7 @@ function App() {
 
       <footer>
         <a className="brand" href="#top" aria-label="VR Archive home"><span className="brand-lockup"><strong><span>VR</span><i aria-hidden="true" />ARCHIVE</strong></span></a>
-        <p>Made between worlds · 2026</p>
+        <p className="footer-note">Made between worlds · 2026<span>Last updated · <time dateTime="2026-08-24">AUG 24, 2026</time></span></p>
         <p className="status"><i /> ARCHIVE ONLINE</p>
       </footer>
 
