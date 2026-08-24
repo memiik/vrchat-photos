@@ -138,21 +138,39 @@ footer .brand-lockup strong { font-size: 12px; }
 }
 
 @media (max-width: 620px) {
-  .topbar { padding-inline: 18px; }
+  .topbar { height: 70px; padding-inline: 18px; }
   .explore-button { font-size: 0; }
   .explore-button span { font-size: 17px; margin-left: 0; }
   .hero, .archive { padding-left: 18px; padding-right: 18px; }
-  .hero-image-wrap { height: 76vw; clip-path: polygon(0 3%, 96% 0, 100% 92%, 4% 100%); }
-  .hero-image-wrap img { object-position: 48% center; }
-  .hero-code { top: 48px; left: 35px; }
-  .hero-caption { top: auto; right: auto; bottom: 32px; left: 34px; font-size: 7px; }
-  .hero-copy { margin-top: -18px; padding: 0; }
-  .hero h1 { font-size: clamp(55px, 19vw, 82px); }
-  .intro { margin-top: 28px; font-size: 13px; }
-  .primary-cta { width: 100%; }
-  .hero-stats { justify-content: space-between; gap: 12px; }
-  .hero-stats strong { font-size: 25px; }
-  .hero-stats span { font-size: 7px; }
+  .hero { padding-top: 96px; padding-bottom: 68px; }
+  .hero-image-wrap {
+    height: min(112vw, 500px);
+    margin-inline: -18px;
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 22px), calc(100% - 22px) 100%, 0 100%);
+  }
+  .hero-image-wrap::after { background: linear-gradient(0deg, rgba(7,8,13,.78), transparent 42%); }
+  .hero-image-wrap img { object-position: center; }
+  .hero-code { top: 28px; left: 24px; }
+  .hero-caption { top: auto; right: auto; bottom: 32px; left: 24px; font-size: 7px; }
+  .hero-copy { margin-top: 0; padding: 30px 0 0; }
+  .hero-copy .eyebrow { margin: 0; }
+  .hero h1 { margin-top: 18px; font-size: clamp(50px, 16.5vw, 68px); letter-spacing: -.075em; }
+  .intro { margin-top: 25px; font-size: 13px; line-height: 1.72; }
+  .primary-cta { width: 100%; margin-top: 26px; }
+  .hero-stats {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0;
+    margin-top: 46px;
+    padding: 20px 0;
+    border-top: 1px solid #25282e;
+    border-bottom: 1px solid #25282e;
+  }
+  .hero-stats div { align-items: flex-start; flex-direction: column; gap: 6px; padding: 0 12px; border-right: 1px solid #25282e; }
+  .hero-stats div:first-child { padding-left: 0; }
+  .hero-stats div:last-child { padding-right: 0; border-right: 0; }
+  .hero-stats strong { font-size: 24px; }
+  .hero-stats span { font-size: 6px; }
   .archive { padding-top: 80px; }
   .section-heading { align-items: start; flex-direction: column; }
   .toolbar { align-items: stretch; flex-direction: column; margin-top: 35px; }
