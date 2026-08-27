@@ -12,6 +12,11 @@ type Photo = {
 const PHOTO_BASE_URL = (import.meta.env.VITE_PHOTO_BASE_URL ?? "https://vrc-photography.s3.amazonaws.com/images").replace(/\/$/, "");
 
 const featuredPhotos: Photo[] = [
+  { src: "/photos/vrchat-2026-08-27-01-09-43.webp", title: "After Hours", world: "VRChat", date: "AUG 27, 2026", tag: "Friends" },
+  { src: "/photos/vrchat-2026-08-27-01-08-58.webp", title: "Streetlight Stories", world: "VRChat", date: "AUG 27, 2026", tag: "Friends" },
+  { src: "/photos/vrchat-2026-08-27-01-06-04.webp", title: "Red Light Reverie", world: "VRChat", date: "AUG 27, 2026", tag: "Friends" },
+  { src: "/photos/vrchat-2026-08-27-01-05-25.webp", title: "Midnight Ride", world: "VRChat", date: "AUG 27, 2026", tag: "Friends" },
+  { src: "/photos/vrchat-2026-08-27-00-57-04.webp", title: "Cherry Street", world: "VRChat", date: "AUG 27, 2026", tag: "Friends" },
   { src: "/photos/vrchat-2026-08-23-19-13-38.webp", title: "Side by Side", world: "VRChat", date: "AUG 23, 2026", tag: "Friends" },
   { src: "/photos/vrchat-2026-08-06-17-02-19.webp", title: "After the Rain", world: "The Midnight Garden", date: "AUG 06, 2026", tag: "Worlds" },
   { src: "/photos/vrchat-2026-08-06-16-22-08.webp", title: "Soft Signal", world: "Aetheria", date: "AUG 06, 2026", tag: "Portraits" },
@@ -62,11 +67,12 @@ const olderPhotoFiles = [
 
 const months = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
 const removedFragments = new Set([23, 24, 25, 28, 29, 30, 31, 32, 35, 36, 40]);
+const archiveFragmentOffset = 18;
 
 const archivePhotos: Photo[] = [
   ...featuredPhotos,
   ...olderPhotoFiles.flatMap((file, index) => {
-    const fragmentNumber = index + featuredPhotos.length + 1;
+    const fragmentNumber = index + archiveFragmentOffset + 1;
     if (removedFragments.has(fragmentNumber)) return [];
     const [, year, month, day] = file.match(/vrchat-(\d{4})-(\d{2})-(\d{2})/) ?? [];
     return [{
@@ -276,7 +282,7 @@ function App() {
 
       <footer>
         <a className="brand" href="#top" aria-label="VR Archive home"><span className="brand-lockup"><strong><span>VR</span><i aria-hidden="true" />ARCHIVE</strong></span></a>
-        <p className="footer-note">Made between worlds · 2026<span>Last updated · <time dateTime="2026-08-24">AUG 24, 2026</time></span></p>
+        <p className="footer-note">Made between worlds · 2026<span>Last updated · <time dateTime="2026-08-27">AUG 27, 2026</time></span></p>
         <p className="status"><i /> ARCHIVE ONLINE</p>
       </footer>
 
