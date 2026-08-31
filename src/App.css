@@ -223,13 +223,19 @@ footer .brand-lockup strong { font-size: 12px; }
     height: auto;
     gap: 8px;
   }
-  .reel-grid.event-grid,
-  .memory-reel:nth-child(even) .reel-grid.event-grid { grid-template-areas: none; }
-  .event-grid .reel-frame,
-  .event-grid .reel-frame:nth-child(n),
+  .memory-reel .reel-grid.event-grid,
+  .memory-reel:nth-child(even) .reel-grid.event-grid {
+    grid-template-areas: none;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-rows: auto;
+    height: auto;
+  }
+  .memory-reel .event-grid .reel-frame,
+  .memory-reel .event-grid .reel-frame:nth-child(n),
   .memory-reel:nth-child(even) .event-grid .reel-frame.lead { grid-area: auto; }
   .reel-frame.lead,
   .memory-reel:nth-child(even) .reel-frame.lead { grid-column: 1 / -1; grid-row: auto; aspect-ratio: 16 / 10; }
+  .memory-reel .event-grid .reel-frame.lead { grid-area: auto; grid-column: 1 / -1; grid-row: auto; }
   .reel-frame.support { aspect-ratio: 1 / 1; }
   .event-grid .reel-frame.support:last-child { grid-column: 1 / -1; aspect-ratio: 16 / 9; }
   .reel-grid.event-grid.pair-grid,
@@ -241,17 +247,17 @@ footer .brand-lockup strong { font-size: 12px; }
   .pair-grid .reel-frame.lead,
   .memory-reel:nth-child(even) .pair-grid .reel-frame.lead { grid-area: first; grid-column: auto; aspect-ratio: 16 / 10; }
   .pair-grid .reel-frame:nth-child(2) { grid-area: second; grid-column: auto; aspect-ratio: 16 / 10; }
-  .reel-grid.event-grid.story-grid,
+  .memory-reel .reel-grid.event-grid.story-grid,
   .memory-reel:nth-child(even) .reel-grid.event-grid.story-grid {
     grid-template-areas: "first second" "third fourth";
     grid-template-columns: repeat(2, minmax(0, 1fr));
     grid-template-rows: auto auto;
   }
-  .story-grid .reel-frame.lead,
-  .memory-reel:nth-child(even) .story-grid .reel-frame.lead { grid-area: first; grid-column: auto; aspect-ratio: 4 / 5; }
-  .story-grid .reel-frame:nth-child(2) { grid-area: second; grid-column: auto; aspect-ratio: 4 / 5; }
-  .story-grid .reel-frame:nth-child(3) { grid-area: third; grid-column: auto; aspect-ratio: 16 / 9; }
-  .story-grid .reel-frame:nth-child(4) { grid-area: fourth; grid-column: auto; aspect-ratio: 16 / 9; }
+  .memory-reel .story-grid .reel-frame.lead,
+  .memory-reel:nth-child(even) .story-grid .reel-frame.lead { grid-area: first; grid-column: auto; aspect-ratio: 4 / 3; }
+  .memory-reel .story-grid .reel-frame:nth-child(2) { grid-area: second; grid-column: auto; aspect-ratio: 4 / 3; }
+  .memory-reel .story-grid .reel-frame:nth-child(3) { grid-area: third; grid-column: auto; aspect-ratio: 16 / 9; }
+  .memory-reel .story-grid .reel-frame:nth-child(4) { grid-area: fourth; grid-column: auto; aspect-ratio: 16 / 9; }
   .frame-date { left: 11px; bottom: 11px; font-size: clamp(11px, 3.5vw, 14px); }
   .frame-date small { margin-bottom: 3px; font-size: 6px; }
   .reel-frame.lead .frame-date { left: 15px; bottom: 14px; }
