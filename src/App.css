@@ -91,6 +91,21 @@ nav a.active { color: white; }
 .event-grid .reel-frame:nth-child(4) { grid-area: c; }
 .event-grid .reel-frame:nth-child(5) { grid-area: d; }
 .event-grid .reel-frame:nth-child(6) { grid-area: e; }
+.reel-grid.event-grid.large-grid,
+.memory-reel:nth-child(even) .reel-grid.event-grid.large-grid {
+  grid-template-areas: "hero hero a b" "hero hero c d" "hero hero e f";
+}
+.large-grid .reel-frame:nth-child(7) { grid-area: f; }
+.reel-grid.event-grid.nine-grid,
+.memory-reel:nth-child(even) .reel-grid.event-grid.nine-grid {
+  grid-template-areas: "hero hero hero hero hero hero" "a a b b c c" "d d e e f f" "g g g h h h";
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  grid-template-rows: auto;
+  height: auto;
+}
+.nine-grid .reel-frame { aspect-ratio: 16 / 9; }
+.nine-grid .reel-frame:nth-child(8) { grid-area: g; }
+.nine-grid .reel-frame:nth-child(9) { grid-area: h; }
 .reel-grid.event-grid.pair-grid,
 .memory-reel:nth-child(even) .reel-grid.event-grid.pair-grid {
   grid-template-areas: "first second";
@@ -223,6 +238,10 @@ footer .brand-lockup strong { font-size: 12px; }
     height: auto;
     gap: 8px;
   }
+  .memory-reel .reel-grid.event-grid.nine-grid,
+  .memory-reel:nth-child(even) .reel-grid.event-grid.nine-grid,
+  .memory-reel .reel-grid.event-grid.large-grid,
+  .memory-reel:nth-child(even) .reel-grid.event-grid.large-grid,
   .memory-reel .reel-grid.event-grid,
   .memory-reel:nth-child(even) .reel-grid.event-grid {
     grid-template-areas: none;
@@ -236,8 +255,10 @@ footer .brand-lockup strong { font-size: 12px; }
   .reel-frame.lead,
   .memory-reel:nth-child(even) .reel-frame.lead { grid-column: 1 / -1; grid-row: auto; aspect-ratio: 16 / 10; }
   .memory-reel .event-grid .reel-frame.lead { grid-area: auto; grid-column: 1 / -1; grid-row: auto; }
+  .memory-reel .nine-grid .reel-frame.lead { aspect-ratio: 16 / 9; }
   .reel-frame.support { aspect-ratio: 1 / 1; }
   .event-grid .reel-frame.support:last-child { grid-column: 1 / -1; aspect-ratio: 16 / 9; }
+  .large-grid .reel-frame.support:last-child { grid-column: auto; aspect-ratio: 1 / 1; }
   .reel-grid.event-grid.pair-grid,
   .memory-reel:nth-child(even) .reel-grid.event-grid.pair-grid {
     grid-template-areas: "first second";
