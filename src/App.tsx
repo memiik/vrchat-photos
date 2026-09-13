@@ -16,12 +16,24 @@ type ReelFrame = { photo: Photo; index: number };
 type PhotoReel = { frames: ReelFrame[]; eventId?: string; eventTitle?: string };
 
 const PHOTO_BASE_URL = (import.meta.env.VITE_PHOTO_BASE_URL ?? "https://vrc-photography.s3.amazonaws.com/images").replace(/\/$/, "");
+const SEPTEMBER_13_REEL_ID = "september-night-2026-09-13";
+const SEPTEMBER_13_REEL_TITLE = "SEPTEMBER NIGHT";
 const PARTY_REEL_ID = "bachelor-graduation-2026-08-28";
 const PARTY_REEL_TITLE = "BACHELOR + GRADUATION PARTY";
 const AUGUST_27_REEL_ID = "preserved-frames-2026-08-27";
 const GRASS_REEL_ID = "grass-hangout-2026-09-07";
 
 const featuredPhotos: Photo[] = [
+  { src: "/photos/vrchat-2026-09-13-01-58-04.webp", title: "Under the Lanterns", world: "VRChat", date: "SEP 13, 2026", tag: "Friends", eventId: SEPTEMBER_13_REEL_ID, eventTitle: SEPTEMBER_13_REEL_TITLE, highlight: true },
+  { src: "/photos/vrchat-2026-09-13-01-45-30.webp", title: "Magenta Portrait", world: "VRChat", date: "SEP 13, 2026", tag: "Friends", eventId: SEPTEMBER_13_REEL_ID, eventTitle: SEPTEMBER_13_REEL_TITLE },
+  { src: "/photos/vrchat-2026-09-13-02-24-21.webp", title: "Center Stage", world: "VRChat", date: "SEP 13, 2026", tag: "Nightlife", eventId: SEPTEMBER_13_REEL_ID, eventTitle: SEPTEMBER_13_REEL_TITLE },
+  { src: "/photos/vrchat-2026-09-13-01-06-45.webp", title: "Shark Seat", world: "VRChat", date: "SEP 13, 2026", tag: "Friends", eventId: SEPTEMBER_13_REEL_ID, eventTitle: SEPTEMBER_13_REEL_TITLE },
+  { src: "/photos/vrchat-2026-09-13-01-18-18.webp", title: "Warm Light", world: "VRChat", date: "SEP 13, 2026", tag: "Friends", eventId: SEPTEMBER_13_REEL_ID, eventTitle: SEPTEMBER_13_REEL_TITLE },
+  { src: "/photos/vrchat-2026-09-13-01-33-25.webp", title: "Blue Gathering", world: "VRChat", date: "SEP 13, 2026", tag: "Nightlife", eventId: SEPTEMBER_13_REEL_ID, eventTitle: SEPTEMBER_13_REEL_TITLE },
+  { src: "/photos/vrchat-2026-09-13-01-33-29.webp", title: "Weightless", world: "VRChat", date: "SEP 13, 2026", tag: "Nightlife", eventId: SEPTEMBER_13_REEL_ID, eventTitle: SEPTEMBER_13_REEL_TITLE },
+  { src: "/photos/vrchat-2026-09-13-02-27-11.webp", title: "Side by Side", world: "VRChat", date: "SEP 13, 2026", tag: "Friends", eventId: SEPTEMBER_13_REEL_ID, eventTitle: SEPTEMBER_13_REEL_TITLE },
+  { src: "/photos/vrchat-2026-09-13-01-18-32.webp", title: "Three of Us", world: "VRChat", date: "SEP 13, 2026", tag: "Friends", eventId: SEPTEMBER_13_REEL_ID, eventTitle: SEPTEMBER_13_REEL_TITLE },
+  { src: "/photos/vrchat-2026-09-13-02-26-31.webp", title: "Last Portrait", world: "VRChat", date: "SEP 13, 2026", tag: "Friends", eventId: SEPTEMBER_13_REEL_ID, eventTitle: SEPTEMBER_13_REEL_TITLE },
   { src: "/photos/vrchat-2026-09-07-22-03-33.webp", title: "Together in the Grass", world: "VRChat", date: "SEP 07, 2026", tag: "Friends", eventId: GRASS_REEL_ID, highlight: true },
   { src: "/photos/vrchat-2026-09-07-18-50-02.webp", title: "In the Grass", world: "VRChat", date: "SEP 07, 2026", tag: "Friends", eventId: GRASS_REEL_ID },
   { src: "/photos/vrchat-2026-09-07-19-04-02.webp", title: "Feet Up", world: "VRChat", date: "SEP 07, 2026", tag: "Friends", eventId: GRASS_REEL_ID },
@@ -299,7 +311,7 @@ function App() {
                     <div><span>REEL_{String(reelIndex + 1).padStart(2, "0")}</span><b>{reel.eventTitle ? `${reel.frames.length} frames // ${reel.eventTitle}` : `${reel.frames.length} preserved frames`}</b></div>
                     <time>{getReelDateRange(reel.frames)}</time>
                   </header>
-                  <div className={`reel-grid${reel.eventId ? " event-grid" : ""}${reel.eventId && reel.frames.length >= 7 ? " large-grid" : ""}${reel.eventId && reel.frames.length === 9 ? " nine-grid" : ""}${reel.eventId && reel.frames.length === 2 ? " pair-grid" : ""}${reel.eventId && reel.frames.length >= 3 && reel.frames.length <= 4 ? " story-grid" : ""}`}>
+                  <div className={`reel-grid${reel.eventId ? " event-grid" : ""}${reel.eventId && reel.frames.length >= 7 ? " large-grid" : ""}${reel.eventId && reel.frames.length === 9 ? " nine-grid" : ""}${reel.eventId && reel.frames.length === 10 ? " ten-grid" : ""}${reel.eventId && reel.frames.length === 2 ? " pair-grid" : ""}${reel.eventId && reel.frames.length >= 3 && reel.frames.length <= 4 ? " story-grid" : ""}`}>
                     {reel.frames.map(({ photo, index }, frameIndex) => (
                       <article
                         className={frameIndex === 0 ? "reel-frame lead" : "reel-frame support"}
@@ -335,7 +347,7 @@ function App() {
 
       <footer>
         <a className="brand" href="#top" aria-label="VR Archive home"><span className="brand-lockup"><strong><span>VR</span><i aria-hidden="true" />ARCHIVE</strong></span></a>
-        <p className="footer-note">Made between worlds · 2026<span>Last updated · <time dateTime="2026-09-12">SEP 12, 2026</time></span></p>
+        <p className="footer-note">Made between worlds · 2026<span>Last updated · <time dateTime="2026-09-13">SEP 13, 2026</time></span></p>
         <p className="status"><i /> ARCHIVE ONLINE</p>
       </footer>
 
