@@ -16,6 +16,8 @@ type ReelFrame = { photo: Photo; index: number };
 type PhotoReel = { frames: ReelFrame[]; eventId?: string; eventTitle?: string };
 
 const PHOTO_BASE_URL = (import.meta.env.VITE_PHOTO_BASE_URL ?? "https://vrc-photography.s3.amazonaws.com/images").replace(/\/$/, "");
+const ELLIES_BIRTHDAY_REEL_ID = "ellies-birthday-2026-09-26";
+const ELLIES_BIRTHDAY_REEL_TITLE = "Ellies birthday party";
 const SEPTEMBER_13_REEL_ID = "september-night-2026-09-13";
 const SEPTEMBER_13_REEL_TITLE = "SEPTEMBER NIGHT";
 const PARTY_REEL_ID = "bachelor-graduation-2026-08-28";
@@ -24,6 +26,26 @@ const AUGUST_27_REEL_ID = "preserved-frames-2026-08-27";
 const GRASS_REEL_ID = "grass-hangout-2026-09-07";
 
 const featuredPhotos: Photo[] = [
+  { src: "/photos/vrchat-2026-09-26-21-33-54.webp", title: "Birthday Company", world: "VRChat", date: "SEP 26, 2026", tag: "Friends", eventId: ELLIES_BIRTHDAY_REEL_ID, eventTitle: ELLIES_BIRTHDAY_REEL_TITLE, highlight: true },
+  { src: "/photos/vrchat-2026-09-26-21-36-48.webp", title: "Birthday Portrait", world: "VRChat", date: "SEP 26, 2026", tag: "Friends", eventId: ELLIES_BIRTHDAY_REEL_ID, eventTitle: ELLIES_BIRTHDAY_REEL_TITLE },
+  { src: "/photos/vrchat-2026-09-26-21-38-38.webp", title: "Side by Side", world: "VRChat", date: "SEP 26, 2026", tag: "Friends", eventId: ELLIES_BIRTHDAY_REEL_ID, eventTitle: ELLIES_BIRTHDAY_REEL_TITLE },
+  { src: "/photos/vrchat-2026-09-26-21-59-38.webp", title: "Neon Reflections", world: "VRChat", date: "SEP 26, 2026", tag: "Friends", eventId: ELLIES_BIRTHDAY_REEL_ID, eventTitle: ELLIES_BIRTHDAY_REEL_TITLE },
+  { src: "/photos/vrchat-2026-09-26-22-08-43.webp", title: "Blue Light", world: "VRChat", date: "SEP 26, 2026", tag: "Friends", eventId: ELLIES_BIRTHDAY_REEL_ID, eventTitle: ELLIES_BIRTHDAY_REEL_TITLE },
+  { src: "/photos/vrchat-2026-09-26-22-10-33.webp", title: "At the Bar", world: "VRChat", date: "SEP 26, 2026", tag: "Friends", eventId: ELLIES_BIRTHDAY_REEL_ID, eventTitle: ELLIES_BIRTHDAY_REEL_TITLE },
+  { src: "/photos/vrchat-2026-09-26-22-10-53.webp", title: "Party Company", world: "VRChat", date: "SEP 26, 2026", tag: "Friends", eventId: ELLIES_BIRTHDAY_REEL_ID, eventTitle: ELLIES_BIRTHDAY_REEL_TITLE },
+  { src: "/photos/vrchat-2026-09-26-22-11-26.webp", title: "Hands Up", world: "VRChat", date: "SEP 26, 2026", tag: "Friends", eventId: ELLIES_BIRTHDAY_REEL_ID, eventTitle: ELLIES_BIRTHDAY_REEL_TITLE },
+  { src: "/photos/vrchat-2026-09-26-22-13-28.webp", title: "Magenta Glow", world: "VRChat", date: "SEP 26, 2026", tag: "Friends", eventId: ELLIES_BIRTHDAY_REEL_ID, eventTitle: ELLIES_BIRTHDAY_REEL_TITLE },
+  { src: "/photos/vrchat-2026-09-26-22-18-22.webp", title: "A Closer Look", world: "VRChat", date: "SEP 26, 2026", tag: "Friends", eventId: ELLIES_BIRTHDAY_REEL_ID, eventTitle: ELLIES_BIRTHDAY_REEL_TITLE },
+  { src: "/photos/vrchat-2026-09-26-22-21-06.webp", title: "Paws Together", world: "VRChat", date: "SEP 26, 2026", tag: "Friends", eventId: ELLIES_BIRTHDAY_REEL_ID, eventTitle: ELLIES_BIRTHDAY_REEL_TITLE },
+  { src: "/photos/vrchat-2026-09-26-22-26-10.webp", title: "Party Note", world: "VRChat", date: "SEP 26, 2026", tag: "Friends", eventId: ELLIES_BIRTHDAY_REEL_ID, eventTitle: ELLIES_BIRTHDAY_REEL_TITLE },
+  { src: "/photos/vrchat-2026-09-26-22-37-47.webp", title: "Under the Lights", world: "VRChat", date: "SEP 26, 2026", tag: "Friends", eventId: ELLIES_BIRTHDAY_REEL_ID, eventTitle: ELLIES_BIRTHDAY_REEL_TITLE },
+  { src: "/photos/vrchat-2026-09-26-22-47-17.webp", title: "Violet Portrait", world: "VRChat", date: "SEP 26, 2026", tag: "Friends", eventId: ELLIES_BIRTHDAY_REEL_ID, eventTitle: ELLIES_BIRTHDAY_REEL_TITLE },
+  { src: "/photos/vrchat-2026-09-26-22-48-15.webp", title: "Birthday Smile", world: "VRChat", date: "SEP 26, 2026", tag: "Friends", eventId: ELLIES_BIRTHDAY_REEL_ID, eventTitle: ELLIES_BIRTHDAY_REEL_TITLE },
+  { src: "/photos/vrchat-2026-09-26-22-49-03.webp", title: "A Quiet Laugh", world: "VRChat", date: "SEP 26, 2026", tag: "Friends", eventId: ELLIES_BIRTHDAY_REEL_ID, eventTitle: ELLIES_BIRTHDAY_REEL_TITLE },
+  { src: "/photos/vrchat-2026-09-26-22-55-24.webp", title: "Birthday Lights", world: "VRChat", date: "SEP 26, 2026", tag: "Friends", eventId: ELLIES_BIRTHDAY_REEL_ID, eventTitle: ELLIES_BIRTHDAY_REEL_TITLE },
+  { src: "/photos/vrchat-2026-09-26-23-28-30.webp", title: "Late Night Company", world: "VRChat", date: "SEP 26, 2026", tag: "Friends", eventId: ELLIES_BIRTHDAY_REEL_ID, eventTitle: ELLIES_BIRTHDAY_REEL_TITLE },
+  { src: "/photos/vrchat-2026-09-27-00-22-07.webp", title: "Past Midnight", world: "VRChat", date: "SEP 27, 2026", tag: "Friends", eventId: ELLIES_BIRTHDAY_REEL_ID, eventTitle: ELLIES_BIRTHDAY_REEL_TITLE },
+  { src: "/photos/vrchat-2026-09-27-00-56-08.webp", title: "One Last Smile", world: "VRChat", date: "SEP 27, 2026", tag: "Friends", eventId: ELLIES_BIRTHDAY_REEL_ID, eventTitle: ELLIES_BIRTHDAY_REEL_TITLE },
   { src: "/photos/vrchat-2026-09-13-01-58-04.webp", title: "Under the Lanterns", world: "VRChat", date: "SEP 13, 2026", tag: "Friends", eventId: SEPTEMBER_13_REEL_ID, eventTitle: SEPTEMBER_13_REEL_TITLE, highlight: true },
   { src: "/photos/vrchat-2026-09-13-01-45-30.webp", title: "Magenta Portrait", world: "VRChat", date: "SEP 13, 2026", tag: "Friends", eventId: SEPTEMBER_13_REEL_ID, eventTitle: SEPTEMBER_13_REEL_TITLE },
   { src: "/photos/vrchat-2026-09-13-02-24-21.webp", title: "Center Stage", world: "VRChat", date: "SEP 13, 2026", tag: "Nightlife", eventId: SEPTEMBER_13_REEL_ID, eventTitle: SEPTEMBER_13_REEL_TITLE },
@@ -311,7 +333,7 @@ function App() {
                     <div><span>REEL_{String(reelIndex + 1).padStart(2, "0")}</span><b>{reel.eventTitle ? `${reel.frames.length} frames // ${reel.eventTitle}` : `${reel.frames.length} preserved frames`}</b></div>
                     <time>{getReelDateRange(reel.frames)}</time>
                   </header>
-                  <div className={`reel-grid${reel.eventId ? " event-grid" : ""}${reel.eventId && reel.frames.length >= 7 ? " large-grid" : ""}${reel.eventId && reel.frames.length === 9 ? " nine-grid" : ""}${reel.eventId && reel.frames.length === 10 ? " ten-grid" : ""}${reel.eventId && reel.frames.length === 2 ? " pair-grid" : ""}${reel.eventId && reel.frames.length >= 3 && reel.frames.length <= 4 ? " story-grid" : ""}`}>
+                  <div className={`reel-grid${reel.eventId ? " event-grid" : ""}${reel.eventId && reel.frames.length >= 7 ? " large-grid" : ""}${reel.eventId && reel.frames.length === 9 ? " nine-grid" : ""}${reel.eventId && reel.frames.length === 10 ? " ten-grid" : ""}${reel.eventId && reel.frames.length > 10 ? " expanded-grid" : ""}${reel.eventId && reel.frames.length === 2 ? " pair-grid" : ""}${reel.eventId && reel.frames.length >= 3 && reel.frames.length <= 4 ? " story-grid" : ""}`}>
                     {reel.frames.map(({ photo, index }, frameIndex) => (
                       <article
                         className={frameIndex === 0 ? "reel-frame lead" : "reel-frame support"}
@@ -347,7 +369,7 @@ function App() {
 
       <footer>
         <a className="brand" href="#top" aria-label="VR Archive home"><span className="brand-lockup"><strong><span>VR</span><i aria-hidden="true" />ARCHIVE</strong></span></a>
-        <p className="footer-note">Made between worlds · 2026<span>Last updated · <time dateTime="2026-09-13">SEP 13, 2026</time></span></p>
+        <p className="footer-note">Made between worlds · 2026<span>Last updated · <time dateTime="2026-09-28">SEP 28, 2026</time></span></p>
         <p className="status"><i /> ARCHIVE ONLINE</p>
       </footer>
 
